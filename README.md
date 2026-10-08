@@ -67,6 +67,11 @@ cd teamconnect/server
 node server.js
 ```
 
+## Deploy the frontend with GitHub Pages
+The GitHub Actions workflow deploys the Vite frontend whenever a commit is pushed to `main`. In the repository settings, set **Pages > Build and deployment > Source** to **GitHub Actions**. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as repository Actions secrets if the deployed frontend should connect to Supabase; without them it uses the demo mode.
+
+GitHub Pages hosts only the static frontend. The Express server in `server/` needs a separate Node.js host if you want to deploy and use it. The frontend currently connects directly to Supabase.
+
 ## How authentication works
 - The frontend uses Supabase Auth for login and registration.
 - After login, the app checks whether a session exists.
